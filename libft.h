@@ -23,9 +23,14 @@ int                 ft_isascii(int c);
 int                 ft_tolower(int c);
 int                 ft_toupper(int c);
 
+int                 ft_strisalnum(char *str);
+int                 ft_strisalpha(char *str);
+int                 ft_strisnum(char *str);
+
 size_t              ft_strlen(const char *s);
 char                *ft_strchr(const char *s, int c);
 char                *ft_strrchr(const char *s, int c);
+int                 ft_strfindc(char *str, char c);
 int                 ft_strncmp(const char *s1, const char *s2, size_t n);
 int                 ft_strcmp(const char *s1, const char *s2);
 char                *ft_strcpy(char *dest, const char *src);
@@ -39,6 +44,7 @@ char                *ft_strstr(const char *haystack, const char *needle);
 char                *ft_strnstr(const char *haystack, const char *needle, size_t n);
 int                 ft_strintab(char **tab, char *str);
 void                ft_strclr(char *s);
+char                *ft_strcreate(char *str);
 char                *ft_strdup(const char *s);
 char                *ft_strmap(char const *s, char (*f)(char));
 char                *ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -50,7 +56,10 @@ char                *ft_strrmchar(char *str, char c);
 char                *ft_strjoin(char const *s1, char const *s2);
 char                *ft_tabjoin(char **tab, char *sep);
 char                **ft_strsplit(char const *s, char c);
+char                **ft_strsplit2(char const *str, char *seps);
+char                *ft_strreplace(char *str, char *old, char *new);
 int                 ft_atoi(const char *nptr);
+double              ft_atof(const char *nptr);
 char                *ft_itoa(int n);
 
 int                 ft_putchar(int c);

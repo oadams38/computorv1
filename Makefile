@@ -1,9 +1,10 @@
 NAME = computor
 
 SRCS = computor.c \
-		computation.c \
+		parsing.c \
 		verifications.c \
-		tools.c
+		tools.c \
+		print_reduced_n_degree.c
 		
 
 OBJS = $(SRCS:.c=.o)

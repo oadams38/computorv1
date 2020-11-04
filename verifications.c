@@ -38,7 +38,7 @@ int     check_unknown_n_equal_nb(char *argv)
     {
         if (ft_isalpha(argv[i]))
         {
-            if (unknown == ' ')
+            if (unknown == ' ' || unknown == argv[i])
                 unknown = argv[i];
             else
                 return (-1);
@@ -60,7 +60,7 @@ int     check_mathsymb_position(char *argv)
     {
         if (argv[i] != '(' && argv[i] != ')')
         {
-            if (wasmath && is_math_symb(argv[i]))
+            if (wasmath == 1 && is_math_symb(argv[i]) == 1)
                 return (-1);
             wasmath = is_math_symb(argv[i]);
         }
@@ -71,23 +71,13 @@ int     check_mathsymb_position(char *argv)
 int     check_power(char *argv)
 {
     int     i;
-    int     tmp_j;
-    int     tmp_k;
 
     i = -1;
     while (argv[++i])
     {
         if (argv[i] == '^')
         {
-            tmp_j = i;
-            while (tmp_j - 1 >= 0
-                    && is_parenthesis(argv[tmp_j - 1]) != 0)
-                tmp_j--;
-            tmp_k = i;
-            while (argv[tmp_k + 1] != '\0'
-                    && is_parenthesis(argv[tmp_k + 1]) != 0)
-                tmp_k++;
-            if (!(ft_isdigit(argv[tmp_j]) && ft_isdigit(argv[tmp_k])))
+            if (!ft_isalpha(argv[i - 1]) || !ft_isdigit(argv[i + 1]))
                 return (-1);
             if (ft_atoi(&argv[i + 1]) > 2)
                 return (-1);
@@ -98,9 +88,17 @@ int     check_power(char *argv)
 
 int     check_correct_input(char *argv)
 {
+    if (check_par_digit_mathsymb(argv) != 1)
+        ft_putstr("\nProblem at check_par_digit_mathsymb");
+    if (check_unknown_n_equal_nb(argv) != 1)
+        ft_putstr("\nProblem at check_unknown_n_equal_nb");
+    if (check_mathsymb_position(argv) != 1)
+        ft_putstr("\nProblem at check_mathsymb_position");
+    if (check_power(argv) != 1)
+        ft_putstr("\nProblem at check_power");
+
     return (check_par_digit_mathsymb(argv) == 1
             && check_unknown_n_equal_nb(argv) == 1
             && check_mathsymb_position(argv) == 1
             && check_power(argv) == 1);
-    //check nbs not too high. itoa -> if = len -> strcmp
 }

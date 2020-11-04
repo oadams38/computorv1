@@ -4,8 +4,9 @@
 # include "libft.h"
 
 int         check_correct_input(char *argv);
-void        compute_and_print(char *poly);
+double      *get_factors(char *expression);
 int         is_math_symb(char c);
 int         is_parenthesis(char c);
+void        print_reduced_n_degree(double *factors);
 
 #endif
